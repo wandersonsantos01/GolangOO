@@ -1,24 +1,34 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
 
-type Account struct {
-	holder  string
-	agency  int
-	account int
-	balance float64
-}
-
-func (c *Account) Withdraw(withdrawValue float64) bool {
-	canWithdraw := withdrawValue > 0 && withdrawValue <= c.balance
-	if canWithdraw {
-		c.balance -= withdrawValue
-		return true
-	}
-	return false
-}
+	"github.com/wandersonsantos01/golang/account"
+)
 
 func main() {
+	larsAccount := account.Saving{}
+	larsAccount.Deposit(200)
+	account.PayBillet(&larsAccount, 75)
+
+	fmt.Println(larsAccount)
+
+	trujiloAccount := account.Checking{}
+	trujiloAccount.Deposit(100)
+	account.PayBillet(&trujiloAccount, 99)
+
+	fmt.Println(trujiloAccount)
+
+	// kirkAccount := account.Checking{}
+	// kirkAccount.Deposit(20)
+
+	// fmt.Println(kirkAccount.GetBalance())
+
+	// jamesClient := client.Holder{Name: "James", Document: "12345678900", Occupation: "Musician"}
+	// jamesAccount := account.Cheking{Holder: jamesClient, Agency: 123456, Balance: 900}
+
+	// fmt.Println(jamesAccount)
+
 	// paulAccount := Account{holder: "Paul", agency: 123, account: 456789, balance: 235.78}
 	// fmt.Println(paulAccount)
 
@@ -45,12 +55,34 @@ func main() {
 
 	// fmt.Println(&johnAccount, &johnAccountClone)
 
-	var georgeAccount *Account
-	georgeAccount = new(Account)
-	georgeAccount.holder = "George"
-	georgeAccount.balance = 400
+	// // Withdraw
+	// var georgeAccount *Account
+	// georgeAccount = new(Account)
+	// georgeAccount.holder = "George"
+	// georgeAccount.balance = 400
 
-	fmt.Println(georgeAccount.Withdraw(200.))
-	fmt.Println(georgeAccount)
+	// fmt.Println(georgeAccount.Withdraw(200.))
+	// fmt.Println(georgeAccount)
+
+	// Deposit
+	// var angusAccount *Account
+	// angusAccount = new(Account)
+	// angusAccount.holder = "Angus"
+	// angusAccount.balance = 100
+
+	// status, balance := angusAccount.Deposit(150.99)
+	// fmt.Println("status=", status)
+	// fmt.Println("balance=", balance)
+
+	// axelAccount := account.Account{Holder: "Axel", Balance: 100}
+	// slashAccount := account.Account{Holder: "Slash", Balance: 50}
+
+	// fmt.Println(axelAccount)
+	// fmt.Println(slashAccount)
+
+	// axelAccount.Transfer(-20, &slashAccount)
+
+	// fmt.Println(axelAccount)
+	// fmt.Println(slashAccount)
 
 }
